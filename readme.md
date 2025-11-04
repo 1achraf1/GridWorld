@@ -14,7 +14,7 @@ This file contains the entire project, including all Python code and setup instr
 
 | Agent Performance (Learning Curve) | Trained Agent in Action | "Brain" of the Agent (Q-Values) |
 | :---: | :---: | :---: |
-| ![Agent Learning Curve](image_3e5dc2.png) | *(This is where a GIF of your `test_agent_live` output would go)* | *(This is where a screenshot of your `plot_q_values_in_cells` output would go)* |
+| ![Agent Learning Curve](image_3e5dc2.png) | *()* | *()* |
 
 ---
 
