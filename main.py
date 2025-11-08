@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
-# Updated imports to reflect the new package structure
 from gridworld_rl.env import GridWorld
 from gridworld_rl.agents import QAgent
 from gridworld_rl.visualizer import GridVisualizer
@@ -21,29 +19,24 @@ episode_rewards = []
 episode_lengths = []
 
 # Start the Training Loop
-print("Starting training with random start and goal positions...")
+print("Starting training ...")
+
 for episode in range(total_episodes):
-    # a) Set a new random goal
     exclude_for_goal = [env.start] + list(env.obstacles)
     new_goal = env._random_free_cell(exclude=exclude_for_goal)
     env.set_goal(new_goal)
-
-    # b) Set a new random start
+    
     exclude_for_start = list(env.obstacles) + env.goals
     new_start = env._random_free_cell(exclude=exclude_for_start)
     env.start = new_start
     env.agent.set_position(new_start)
 
-    # c) Reset the environment
     env.reset()
     current_pos = env.agent.pos
     state = current_pos[0] * env.width + current_pos[1]
     done = False
-    
     total_episode_reward = 0
     steps_in_episode = 0
-
-   
     while not done:
         action = agent.choose_action(state)
         obs, reward, done, actual_action = env.step(action)
