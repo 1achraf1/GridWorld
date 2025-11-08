@@ -197,7 +197,7 @@ class GridWorld:
                 probabilities = [0.1, 0, 0.1, 0.8]
                 actual_action = np.random.choice(actions, p=probabilities)
             else:
-                actual_action = action  # Should not happen with current action space
+                actual_action = action 
         else:
             # Deterministic: action is executed exactly as intended
             actual_action = action
@@ -205,8 +205,7 @@ class GridWorld:
         proposed_pos = self.agent.move(actual_action)
         proposed_r, proposed_c = proposed_pos
 
-        # --- Part 1: Movement Logic ---
-        # First, let's check if the move is VALID.
+        # checking if the move is VALID.
         is_valid = (0 <= proposed_r < self.height and
                     0 <= proposed_c < self.width and
                     proposed_pos not in self.obstacles)
@@ -216,7 +215,7 @@ class GridWorld:
         else:
             pass  # Agent stays in place
 
-        # Dealing with reward
+        
         if not is_valid:
             reward = self.obstacle_penalty
             done = False
@@ -247,7 +246,7 @@ class GridWorld:
         """Update the goal position during training."""
         new_goal = tuple(new_goal)
 
-        # Make sure new goal is valid
+        # Making sure new goal is valid
         assert new_goal not in self.obstacles, "Goal cannot be on an obstacle"
         assert new_goal != self.start, "Goal cannot be at the start position"
 
